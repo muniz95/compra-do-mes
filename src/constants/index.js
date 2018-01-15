@@ -1,0 +1,2 @@
+export const SAVE_PRODUCT = 'SAVE_PRODUCT'
+export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
