@@ -5,10 +5,10 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
-    "inferno": "^3.9.0",
-    "inferno-component": "^3.9.0",
-    "inferno-redux": "^3.9.0",
-    "inferno-router": "^3.9.0",
+    "inferno": "^3.10.1",
+    "inferno-component": "^3.10.1",
+    "inferno-redux": "^3.10.1",
+    "inferno-router": "^3.10.1",
     "inferno-scripts": "5.0.0",
     "redux": "^3.7.2"
   },
@@ -16,6 +16,11 @@
     "start": "inferno-scripts start",
     "build": "inferno-scripts build",
     "test": "inferno-scripts test --env=jsdom",
-    "eject": "inferno-scripts eject"
+    "eject": "inferno-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "surge -d ./build https://compra-do-mes.surge.sh"
+  },
+  "devDependencies": {
+    "surge": "^0.19.0"
   }
 }

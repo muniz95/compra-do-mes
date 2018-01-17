@@ -1,30 +1,43 @@
 import Component from 'inferno-component'
-import { Product } from './components'
+import Product from './components/Product'
+import ProductForm from './components/ProductForm'
+import { connect } from 'inferno-redux'
 import './App.css'
 
 class App extends Component {
-  state = {
-    products: []
+  constructor(props) {
+    super(props)
+    
+    this.state = {
+      products: []
+    }
   }
-
-  componentDidMount() {
-    this.setState({
-      products: [
-        { name: 'Arroz', quantity: 2, price: 7.99 },
-        { name: 'Feijão', quantity: 2, price: 2.59 },
-        { name: 'Carne moída', quantity: 1.580, price: 15.76 },
-        { name: 'Batata', quantity: 0.542, price: 1.02 }
-      ]
-    })
-}
 
   render() {
     return (
-      <p className="App-intro">
-        <Product />
-      </p>
+      <div>
+        <ProductForm />
+        <p>
+          {this.props.products.length ? this.props.total : '' }
+        </p>
+        <p className="App-intro">
+          {
+            this.props.products.map(product => 
+              <Product {...product}/>
+            )
+          }
+        </p>
+      </div>
     )
   }
 }
 
-export default App
+function mapStateToProps(state) {
+  const { products, total } = state
+  return {
+    products,
+    total
+  }
+}
+
+export default connect(mapStateToProps, null)(App)

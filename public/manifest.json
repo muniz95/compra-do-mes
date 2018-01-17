@@ -1,6 +1,6 @@
 {
-  "short_name": "Inferno App",
-  "name": "Create Inferno App Sample",
+  "short_name": "Compra do Mês",
+  "name": "Compra do Mês",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#ffffff",
   "background_color": "#ffffff"
 }

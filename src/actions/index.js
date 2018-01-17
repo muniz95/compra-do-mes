@@ -1,17 +1,33 @@
-import { SAVE_PRODUCT, REMOVE_PRODUCT } from "../constants";
+import { SAVE_PRODUCT, REMOVE_PRODUCT, INCREASE_TOTAL, DECREASE_TOTAL, EMPTY_TOTAL } from "../constants";
 
 export const saveProduct = (product) => {
-  const action = {
+  return {
     type: SAVE_PRODUCT,
     payload: product
   };
-  return action;
 };
 
 export const removeProduct = (product) => {
-  const action = {
+  return {
     type: REMOVE_PRODUCT,
     payload: product
   };
-  return action;
 };
+
+export const increaseTotal = (value) => {
+  return {
+    type: INCREASE_TOTAL,
+    payload: value
+  };
+};
+
+export const decreaseTotal = (value) => {
+  return {
+    type: DECREASE_TOTAL,
+    payload: value
+  };
+};
+
+export const emptyTotal = () => {
+  return { type: EMPTY_TOTAL }
+}
