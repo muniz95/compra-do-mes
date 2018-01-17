@@ -15,9 +15,9 @@ const products = (state = [], action) => {
 const total = (state = 0, action) => {
   switch (action.type) {
     case INCREASE_TOTAL:
-      return state + action.payload
+      return state + Number.parseFloat(action.payload)
     case DECREASE_TOTAL:
-      return state - action.payload
+      return state - Number.parseFloat(action.payload)
     case EMPTY_TOTAL:
       return 0
     default:

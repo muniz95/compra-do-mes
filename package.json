@@ -18,7 +18,7 @@
     "test": "inferno-scripts test --env=jsdom",
     "eject": "inferno-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "surge -d ./build https://compra-do-mes.surge.sh"
+    "deploy": "surge ./build -d https://compra-do-mes.surge.sh"
   },
   "devDependencies": {
     "surge": "^0.19.0"
