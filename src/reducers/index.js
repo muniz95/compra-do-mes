@@ -1,13 +1,25 @@
-import { SAVE_PRODUCT, REMOVE_PRODUCT, INCREASE_TOTAL, DECREASE_TOTAL, EMPTY_TOTAL } from '../constants'
+import { SAVE_PRODUCT, EDIT_PRODUCT, UPDATE_PRODUCT, REMOVE_PRODUCT, INCREASE_TOTAL, DECREASE_TOTAL, EMPTY_TOTAL, EMPTY_PRODUCTS } from '../constants'
 import { combineReducers } from 'redux'
 
 const products = (state = [], action) => {
   switch (action.type) {
+    case UPDATE_PRODUCT:
+      return [...state.filter(s => s.id !== action.payload.id), action.payload]
     case SAVE_PRODUCT:
       return [...state, action.payload]
     case REMOVE_PRODUCT:
-      const retorno = state.filter(s => s.id !== action.payload.id)
-      return [...retorno]
+      return [...state.filter(s => s.id !== action.payload.id)]
+    case EMPTY_PRODUCTS:
+      return []
+    default:
+      return state
+  }
+}
+
+const product = (state = {}, action) => {
+  switch (action.type) {
+    case EDIT_PRODUCT:
+      return action.payload
     default:
       return state
   }
@@ -28,5 +40,6 @@ const total = (state = 0, action) => {
 
 export default combineReducers({
   products,
+  product,
   total
 })

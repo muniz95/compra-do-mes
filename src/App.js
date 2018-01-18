@@ -1,6 +1,7 @@
 import Component from 'inferno-component'
 import Product from './components/Product'
 import ProductForm from './components/ProductForm'
+import { emptyTotal, emptyProducts } from './actions'
 import { connect } from 'inferno-redux'
 // import './App.css'
 
@@ -11,10 +12,28 @@ class App extends Component {
     this.state = {
       products: []
     }
+    
+    this.clean = this.clean.bind(this)
+  }
+  
+  clean() {
+    this.props.dispatchEmptyTotal()
+    this.props.dispatchEmptyProducts()
   }
 
   render() {
     const { products } = this.props
+    const btnCleanList = products.length
+      ? [
+        <div className="row">&nbsp;</div>,
+        <div className="row">
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <button className="btn btn-danger" onClick={this.clean}>Limpar lista</button>
+          </div>
+        </div>
+        ]
+      :
+        null
     return (
       <div>
         <div className="row">
@@ -22,26 +41,23 @@ class App extends Component {
             <ProductForm />
           </div>
         </div>
-        <div className="row">&nbsp;</div>
         <div className="row">
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h2>Total da compra: R$ {Number.parseFloat(this.props.total).toFixed(2)}</h2>
+            <h3>Total da compra: R$ {Number.parseFloat(this.props.total).toFixed(2)}</h3>
           </div>
         </div>
           {
-            products.map(product => {
-              
-              console.log('produto recebido: ', product);
-              return <Product {...product}/>
-            }
-          )
+            products.map(product =>
+              <Product {...product}/>
+            )
           }
+          { btnCleanList }
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   const { products, total } = state
   return {
     products,
@@ -49,4 +65,13 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, null)(App)
+const mapDispatchToProps = (dispatch) => ({
+  dispatchEmptyTotal: () => {
+    dispatch(emptyTotal())
+  },
+  dispatchEmptyProducts: () => {
+    dispatch(emptyProducts())
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

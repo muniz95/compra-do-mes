@@ -1,28 +1,34 @@
 import Component from 'inferno-component'
-import { removeProduct, increaseTotal, decreaseTotal, emptyTotal } from '../actions'
+import { editProduct, removeProduct, increaseTotal, decreaseTotal } from '../actions'
 import { connect } from 'inferno-redux'
 
 class Product extends Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      product: {...props}
+    }
+    
+    this.removeProduct = this.removeProduct.bind(this)
+    this.editProduct = this.editProduct.bind(this)
+  }
+  
+  componentWillReceiveProps(props) {
     const { quantity, price } = props
     const total = (quantity * price).toFixed(2)
-    this.state = {
+    this.setState({
       product: {
         ...props,
         total
       }
-    }
-    props.dispatchIncreaseTotal(total)
-    
-    this.removeProduct = this.removeProduct.bind(this)
+    })
   }
   
   editProduct() {
     const { product } = this.state
     this.props.dispatchDecreaseTotal(product.total)
-    this.props.dispatchRemoveProduct(product)
+    this.props.dispatchEditProduct(product)
   }
   
   removeProduct() {
@@ -58,6 +64,9 @@ class Product extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
+  dispatchEditProduct: (product) => {
+    dispatch(editProduct(product))
+  },
   dispatchRemoveProduct: (product) => {
     dispatch(removeProduct(product))
   },
@@ -66,9 +75,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   dispatchDecreaseTotal: (value) => {
     dispatch(decreaseTotal(value))
-  },
-  dispatchEmptyTotal: (value) => {
-    dispatch(emptyTotal(value))
   }
 })
 

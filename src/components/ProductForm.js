@@ -1,6 +1,6 @@
 import Component from 'inferno-component'
 import { connect } from 'inferno-redux'
-import { saveProduct } from '../actions'
+import { saveProduct, updateProduct, increaseTotal, decreaseTotal } from '../actions'
 
 class ProductForm extends Component {
   constructor(props) {
@@ -11,10 +11,22 @@ class ProductForm extends Component {
     this.save = this.save.bind(this)
   }
   
+  componentWillReceiveProps(props) {
+    this.setState({...props.product})
+  }
+  
   save() {
     const product = this.state
-    product.id = Date.now()
-    this.props.dispatchSaveProduct(product)
+    const { quantity, price } = product
+    product.total = (quantity * price).toFixed(2)
+    if (!product.id) {
+      product.id = Date.now()
+      this.props.dispatchSaveProduct(product)
+    } else {
+      this.props.dispatchUpdateProduct(product)
+    }
+    this.props.dispatchIncreaseTotal(product.total)
+    
     this.cleanForm()
   }
   
@@ -22,7 +34,8 @@ class ProductForm extends Component {
     this.setState({
       name: '',
       quantity: '',
-      price: ''
+      price: '',
+      id: false
     })
   }
   
@@ -76,10 +89,27 @@ class ProductForm extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  const { products, product } = state
+  return {
+    products,
+    product
+  }
+}
+
 const mapDispatchToProps = (dispatch) => ({
   dispatchSaveProduct: (product) => {
     dispatch(saveProduct(product))
+  },
+  dispatchUpdateProduct: (product) => {
+    dispatch(updateProduct(product))
+  },
+  dispatchIncreaseTotal: (value) => {
+    dispatch(increaseTotal(value))
+  },
+  dispatchDecreaseTotal: (value) => {
+    dispatch(decreaseTotal(value))
   }
 })
 
-export default connect(null, mapDispatchToProps)(ProductForm)
+export default connect(mapStateToProps, mapDispatchToProps)(ProductForm)
