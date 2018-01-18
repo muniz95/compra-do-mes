@@ -56,7 +56,7 @@ class Product extends Component {
           <i className="fa fa-pencil" onClick={this.editProduct}></i>
         </div>
         <div className="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-          <i className="fa fa-minus-square" onClick={this.removeProduct}></i>
+          <i className="fa fa-trash" onClick={this.removeProduct}></i>
         </div>
       </div>
     )
