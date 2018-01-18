@@ -16,19 +16,25 @@ class Product extends Component {
     }
     props.dispatchIncreaseTotal(total)
     
-    console.log(this.state)
+    this.removeProduct = this.removeProduct.bind(this)
+  }
+  
+  editProduct() {
+    const { product } = this.state
+    this.props.dispatchDecreaseTotal(product.total)
+    this.props.dispatchRemoveProduct(product)
   }
   
   removeProduct() {
-    const { product, total } = this.state
-    this.props.dispatchDecreaseTotal(total)
+    const { product } = this.state
+    this.props.dispatchDecreaseTotal(product.total)
     this.props.dispatchRemoveProduct(product)
   }
 
   render() {
     return (
       <div className="row">
-        <div className="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+        <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
           { this.state.product.name }
         </div>
         <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
@@ -39,6 +45,9 @@ class Product extends Component {
         </div>
         <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
           { this.state.product.total }
+        </div>
+        <div className="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+          <i className="fa fa-pencil" onClick={this.editProduct}></i>
         </div>
         <div className="col-lg-1 col-md-1 col-sm-1 col-xs-1">
           <i className="fa fa-minus-square" onClick={this.removeProduct}></i>

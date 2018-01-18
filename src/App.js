@@ -2,7 +2,7 @@ import Component from 'inferno-component'
 import Product from './components/Product'
 import ProductForm from './components/ProductForm'
 import { connect } from 'inferno-redux'
-import './App.css'
+// import './App.css'
 
 class App extends Component {
   constructor(props) {
@@ -14,19 +14,28 @@ class App extends Component {
   }
 
   render() {
+    const { products } = this.props
     return (
       <div>
-        <ProductForm />
-        <p>
-          {this.props.products.length ? this.props.total : '' }
-        </p>
-        <p className="App-intro">
+        <div className="row">
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <ProductForm />
+          </div>
+        </div>
+        <div className="row">&nbsp;</div>
+        <div className="row">
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h2>Total da compra: R$ {Number.parseFloat(this.props.total).toFixed(2)}</h2>
+          </div>
+        </div>
           {
-            this.props.products.map(product => 
-              <Product {...product}/>
-            )
+            products.map(product => {
+              
+              console.log('produto recebido: ', product);
+              return <Product {...product}/>
+            }
+          )
           }
-        </p>
       </div>
     )
   }

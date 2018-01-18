@@ -6,7 +6,8 @@ const products = (state = [], action) => {
     case SAVE_PRODUCT:
       return [...state, action.payload]
     case REMOVE_PRODUCT:
-      return {}
+      const retorno = state.filter(s => s.id !== action.payload.id)
+      return [...retorno]
     default:
       return state
   }

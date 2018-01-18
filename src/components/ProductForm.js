@@ -12,7 +12,9 @@ class ProductForm extends Component {
   }
   
   save() {
-    this.props.dispatchSaveProduct(this.state)
+    const product = this.state
+    product.id = Date.now()
+    this.props.dispatchSaveProduct(product)
     this.cleanForm()
   }
   
