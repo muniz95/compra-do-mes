@@ -29,6 +29,7 @@ class Product extends Component {
     const { product } = this.state
     this.props.dispatchDecreaseTotal(product.total)
     this.props.dispatchEditProduct(product)
+    window.scrollTo(0, 0)
   }
   
   removeProduct() {
@@ -66,28 +67,6 @@ class Product extends Component {
         </div>
       </div>
     )
-      {/*
-      <div className="row">
-        <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          { this.state.product.name }
-        </div>
-        <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-          { this.state.product.quantity }
-        </div>
-        <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-          { this.state.product.price }
-        </div>
-        <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-          { this.state.product.total }
-        </div>
-        <div className="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-          <i className="fa fa-pencil" onClick={this.editProduct}></i>
-        </div>
-        <div className="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-          <i className="fa fa-trash" onClick={this.removeProduct}></i>
-        </div>
-      </div>
-      */}
   }
 }
 

@@ -23,18 +23,6 @@ class App extends Component {
 
   render() {
     const { products } = this.props
-    const productsHeader = products.length
-      ? [
-        <div className="row">&nbsp;</div>,
-        <div className="row">
-          <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4"><b>Produto</b></div>
-          <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2"><b>Qtd.</b></div>
-          <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2"><b>Preço</b></div>
-          <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2"><b>Total</b></div>
-        </div>
-        ]
-      :
-        null
     const btnCleanList = products.length
       ? [
         <div className="row">&nbsp;</div>,
@@ -59,7 +47,6 @@ class App extends Component {
             <h3>Total da compra: R$ {Number.parseFloat(this.props.total).toFixed(2)}</h3>
           </div>
         </div>
-        { /*productsHeader*/ }
         <div className="row">&nbsp;</div>
         <div className="row">
           { products.map(product =>
@@ -67,6 +54,7 @@ class App extends Component {
           ) }
         </div>
         { btnCleanList }
+        <div className="row">&nbsp;</div>
       </div>
     )
   }
