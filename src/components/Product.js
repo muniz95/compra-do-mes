@@ -39,6 +39,34 @@ class Product extends Component {
 
   render() {
     return (
+      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">{this.state.product.name}</h4>
+            <div className="row">
+              <div className="col"><b>Qtd.</b></div>
+              <div className="col"><b>Preço</b></div>
+              <div className="col"><b>Preço total</b></div>
+            </div>
+            <div className="row">
+              <div className="col">{this.state.product.quantity}</div>
+              <div className="col">R$ {this.state.product.price}</div>
+              <div className="col">R$ {this.state.product.total}</div>
+            </div>
+            <div className="row">&nbsp;</div>
+            <div className="row">
+              <div className="col text-center">
+                <i className="fa fa-2x fa-pencil" onClick={this.editProduct}></i>
+              </div>
+              <div className="col text-center">
+                <i className="fa fa-2x fa-trash" onClick={this.removeProduct}></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+      {/*
       <div className="row">
         <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
           { this.state.product.name }
@@ -59,7 +87,7 @@ class Product extends Component {
           <i className="fa fa-trash" onClick={this.removeProduct}></i>
         </div>
       </div>
-    )
+      */}
   }
 }
 

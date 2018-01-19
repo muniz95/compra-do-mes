@@ -53,15 +53,19 @@ class App extends Component {
             <ProductForm />
           </div>
         </div>
+        <div className="row">&nbsp;</div>
         <div className="row">
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h3>Total da compra: R$ {Number.parseFloat(this.props.total).toFixed(2)}</h3>
           </div>
         </div>
-        { productsHeader }
-        { products.map(product =>
-            <Product {...product}/>
-        ) }
+        { /*productsHeader*/ }
+        <div className="row">&nbsp;</div>
+        <div className="row">
+          { products.map(product =>
+              <Product {...product}/>
+          ) }
+        </div>
         { btnCleanList }
       </div>
     )
