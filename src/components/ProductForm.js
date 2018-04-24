@@ -1,6 +1,6 @@
-import Component from 'inferno-component'
+import { Component } from 'inferno'
 import { connect } from 'inferno-redux'
-import { saveProduct, updateProduct, increaseTotal, decreaseTotal } from '../actions'
+import { saveProduct, updateProduct, increaseTotal, decreaseTotal } from '../redux/actions'
 
 class ProductForm extends Component {
   constructor(props) {

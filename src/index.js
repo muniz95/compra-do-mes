@@ -1,18 +1,16 @@
 import { render } from 'inferno'
 import { Provider } from 'inferno-redux'
-import { Router } from 'inferno-router'
-import routes from './routes'
-import { store } from './store'
+import { store } from './redux/store'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 import './index.css'
 import registerServiceWorker from './registerServiceWorker'
-import createBrowserHistory from 'history/createBrowserHistory'
-const page = <Router history={createBrowserHistory()}>{routes}</Router>
+import App from './App';
+import Main from './Main';
 
 render(
 	<Provider store={store}>
-		{page}
+		<Main><App/></Main>
 	</Provider>
 	, document.getElementById('app')
 )

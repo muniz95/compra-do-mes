@@ -7,6 +7,7 @@
     "font-awesome": "^4.7.0",
     "inferno": "^5.0.4",
     "inferno-component": "^5.0.4",
+    "inferno-create-class": "^5.0.4",
     "inferno-redux": "^5.0.4",
     "inferno-router": "^5.0.4",
     "inferno-scripts": "^6.3.0",

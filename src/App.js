@@ -1,7 +1,7 @@
-import Component from 'inferno-component'
+import { Component } from 'inferno'
 import Product from './components/Product'
 import ProductForm from './components/ProductForm'
-import { emptyTotal, emptyProducts } from './actions'
+import { emptyTotal, emptyProducts } from './redux/actions'
 import { connect } from 'inferno-redux'
 // import './App.css'
 

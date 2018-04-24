@@ -1,5 +1,5 @@
-import Component from 'inferno-component'
-import { editProduct, removeProduct, increaseTotal, decreaseTotal } from '../actions'
+import { Component } from 'inferno'
+import { editProduct, removeProduct, increaseTotal, decreaseTotal } from '../redux/actions'
 import { connect } from 'inferno-redux'
 
 class Product extends Component {
