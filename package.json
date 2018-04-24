@@ -5,11 +5,11 @@
   "dependencies": {
     "bootstrap": "4.0.0-alpha.6",
     "font-awesome": "^4.7.0",
-    "inferno": "^3.10.1",
-    "inferno-component": "^3.10.1",
-    "inferno-redux": "^3.10.1",
-    "inferno-router": "^3.10.1",
-    "inferno-scripts": "5.0.0",
+    "inferno": "^5.0.4",
+    "inferno-component": "^5.0.4",
+    "inferno-redux": "^5.0.4",
+    "inferno-router": "^5.0.4",
+    "inferno-scripts": "^6.3.0",
     "redux": "^3.7.2"
   },
   "scripts": {

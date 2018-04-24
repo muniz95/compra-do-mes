@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       products: []
     }
+    console.log('foi')
     
     this.clean = this.clean.bind(this)
   }
