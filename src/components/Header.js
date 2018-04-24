@@ -1,4 +1,4 @@
-import Component from 'inferno-component'
+import { Component } from 'inferno'
 // import './Header.css'
 
 export default class Header extends Component {
