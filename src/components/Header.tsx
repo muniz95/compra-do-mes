@@ -1,7 +1,10 @@
 import { Component } from 'inferno'
 // import './Header.css'
 
-export default class Header extends Component {
+interface IProps {}
+interface IState {}
+
+export default class Header extends Component<IProps, IState> {
   render() {
     return (
       <nav class="navbar navbar-default">

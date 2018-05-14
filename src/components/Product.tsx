@@ -2,8 +2,21 @@ import { Component } from 'inferno'
 import { editProduct, removeProduct, increaseTotal, decreaseTotal } from '../redux/actions'
 import { connect } from 'inferno-redux'
 
-class Product extends Component {
-  constructor(props) {
+interface IProps {
+  quantity: number,
+  price: number,
+  dispatchDecreaseTotal: (total: number) => {},
+  dispatchEditProduct: (product: any) => {},
+  dispatchRemoveProduct: (product: any) => {},
+}
+interface IState {
+  product: any
+}
+
+class Product extends Component<IProps, IState> {
+  public state: any
+
+  constructor(props: IProps) {
     super(props)
 
     this.state = {
@@ -14,7 +27,7 @@ class Product extends Component {
     this.editProduct = this.editProduct.bind(this)
   }
   
-  componentWillReceiveProps(props) {
+  componentWillReceiveProps(props: IProps) {
     const { quantity, price } = props
     const total = (quantity * price).toFixed(2)
     this.setState({
@@ -70,17 +83,17 @@ class Product extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatchEditProduct: (product) => {
+const mapDispatchToProps = (dispatch: any) => ({
+  dispatchEditProduct: (product: any) => {
     dispatch(editProduct(product))
   },
-  dispatchRemoveProduct: (product) => {
+  dispatchRemoveProduct: (product: any) => {
     dispatch(removeProduct(product))
   },
-  dispatchIncreaseTotal: (value) => {
+  dispatchIncreaseTotal: (value: any) => {
     dispatch(increaseTotal(value))
   },
-  dispatchDecreaseTotal: (value) => {
+  dispatchDecreaseTotal: (value: any) => {
     dispatch(decreaseTotal(value))
   }
 })
