@@ -1,51 +1,51 @@
-import { SAVE_PRODUCT, EDIT_PRODUCT, REMOVE_PRODUCT, INCREASE_TOTAL, DECREASE_TOTAL, EMPTY_TOTAL, EMPTY_PRODUCTS, UPDATE_PRODUCT } from "../constants"
+import { DECREASE_TOTAL, EDIT_PRODUCT, EMPTY_PRODUCTS, EMPTY_TOTAL, INCREASE_TOTAL, REMOVE_PRODUCT, SAVE_PRODUCT, UPDATE_PRODUCT } from '../constants';
 
 export const saveProduct = (product) => {
   return {
-    type: SAVE_PRODUCT,
-    payload: product
-  }
-}
+    payload: product,
+    type: SAVE_PRODUCT
+  };
+};
 
 export const editProduct = (product) => {
   return {
-    type: EDIT_PRODUCT,
-    payload: product
-  }
-}
+    payload: product,
+    type: EDIT_PRODUCT
+  };
+};
 
 export const updateProduct = (product) => {
   return {
-    type: UPDATE_PRODUCT,
-    payload: product
-  }
-}
+    payload: product,
+    type: UPDATE_PRODUCT
+  };
+};
 
 export const removeProduct = (product) => {
   return {
-    type: REMOVE_PRODUCT,
-    payload: product
-  }
-}
+    payload: product,
+    type: REMOVE_PRODUCT
+  };
+};
 
 export const emptyProducts = () => {
-  return { type: EMPTY_PRODUCTS }
-}
+  return { type: EMPTY_PRODUCTS };
+};
 
 export const increaseTotal = (value) => {
   return {
-    type: INCREASE_TOTAL,
-    payload: value
-  }
-}
+    payload: value,
+    type: INCREASE_TOTAL
+  };
+};
 
 export const decreaseTotal = (value) => {
   return {
-    type: DECREASE_TOTAL,
-    payload: value
-  }
-}
+    payload: value,
+    type: DECREASE_TOTAL
+  };
+};
 
 export const emptyTotal = () => {
-  return { type: EMPTY_TOTAL }
-}
+  return { type: EMPTY_TOTAL };
+};

@@ -1,11 +1,8 @@
-import { Component } from 'inferno'
+import { Component } from 'inferno';
 // import './Header.css'
 
-interface IProps {}
-interface IState {}
-
-export default class Header extends Component<IProps, IState> {
-  render() {
+export default class Header extends Component<{}, {}> {
+  public render() {
     return (
       <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -14,6 +11,6 @@ export default class Header extends Component<IProps, IState> {
           </div>
         </div>
       </nav>
-    )
+    );
   }
 }

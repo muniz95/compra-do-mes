@@ -1,10 +1,14 @@
-import Header from './components/Header'
+import Header from './components/Header';
 
-const Main = ({ children }) => (
+interface IProps {
+  children: any;
+}
+
+const Main = ({ children }: IProps) => (
   <div>
     <Header />
     <div className="container">{children}</div>
   </div>
-)
+);
 
-export default Main
+export default Main;

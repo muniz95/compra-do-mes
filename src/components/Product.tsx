@@ -1,57 +1,57 @@
-import { Component } from 'inferno'
-import { editProduct, removeProduct, increaseTotal, decreaseTotal } from '../redux/actions'
-import { connect } from 'inferno-redux'
+import { Component } from 'inferno';
+import { connect } from 'inferno-redux';
+import { decreaseTotal, editProduct, increaseTotal, removeProduct } from '../redux/actions';
 
 interface IProps {
-  quantity: number,
-  price: number,
-  dispatchDecreaseTotal: (total: number) => {},
-  dispatchEditProduct: (product: any) => {},
-  dispatchRemoveProduct: (product: any) => {},
+  quantity: number;
+  price: number;
+  dispatchDecreaseTotal: (total: number) => {};
+  dispatchEditProduct: (product: any) => {};
+  dispatchRemoveProduct: (product: any) => {};
 }
 interface IState {
-  product: any
+  product: any;
 }
 
 class Product extends Component<IProps, IState> {
-  public state: any
+  public state: any;
 
   constructor(props: IProps) {
-    super(props)
+    super(props);
 
     this.state = {
       product: {...props}
-    }
-    
-    this.removeProduct = this.removeProduct.bind(this)
-    this.editProduct = this.editProduct.bind(this)
+    };
+
+    this.removeProduct = this.removeProduct.bind(this);
+    this.editProduct = this.editProduct.bind(this);
   }
-  
-  componentWillReceiveProps(props: IProps) {
-    const { quantity, price } = props
-    const total = (quantity * price).toFixed(2)
+
+  public componentWillReceiveProps(props: IProps) {
+    const { quantity, price } = props;
+    const total = (quantity * price).toFixed(2);
     this.setState({
       product: {
         ...props,
         total
       }
-    })
-  }
-  
-  editProduct() {
-    const { product } = this.state
-    this.props.dispatchDecreaseTotal(product.total)
-    this.props.dispatchEditProduct(product)
-    window.scrollTo(0, 0)
-  }
-  
-  removeProduct() {
-    const { product } = this.state
-    this.props.dispatchDecreaseTotal(product.total)
-    this.props.dispatchRemoveProduct(product)
+    });
   }
 
-  render() {
+  public editProduct() {
+    const { product } = this.state;
+    this.props.dispatchDecreaseTotal(product.total);
+    this.props.dispatchEditProduct(product);
+    window.scrollTo(0, 0);
+  }
+
+  public removeProduct() {
+    const { product } = this.state;
+    this.props.dispatchDecreaseTotal(product.total);
+    this.props.dispatchRemoveProduct(product);
+  }
+
+  public render() {
     return (
       <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <div class="card">
@@ -79,23 +79,23 @@ class Product extends Component<IProps, IState> {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
-  dispatchEditProduct: (product: any) => {
-    dispatch(editProduct(product))
+  dispatchDecreaseTotal: (value: any) => {
+    dispatch(decreaseTotal(value));
   },
-  dispatchRemoveProduct: (product: any) => {
-    dispatch(removeProduct(product))
+  dispatchEditProduct: (product: any) => {
+    dispatch(editProduct(product));
   },
   dispatchIncreaseTotal: (value: any) => {
-    dispatch(increaseTotal(value))
+    dispatch(increaseTotal(value));
   },
-  dispatchDecreaseTotal: (value: any) => {
-    dispatch(decreaseTotal(value))
+  dispatchRemoveProduct: (product: any) => {
+    dispatch(removeProduct(product));
   }
-})
+});
 
-export default connect(null, mapDispatchToProps)(Product)
+export default connect(null, mapDispatchToProps)(Product);

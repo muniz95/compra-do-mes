@@ -1,53 +1,69 @@
-import { Component } from 'inferno'
-import { connect } from 'inferno-redux'
-import { saveProduct, updateProduct, increaseTotal, decreaseTotal } from '../redux/actions'
+import { Component } from 'inferno';
+import { connect } from 'inferno-redux';
+import { decreaseTotal, increaseTotal, saveProduct, updateProduct } from '../redux/actions';
 
-class ProductForm extends Component {
+interface IProps {
+  dispatchSaveProduct: (product) => {} | null;
+  dispatchUpdateProduct: (product) => {} | null;
+  dispatchIncreaseTotal: (value) => {} | null;
+  dispatchDecreaseTotal: (value) => {} | null;
+  product: any | null;
+}
+
+interface IState {
+  id: number;
+  name: string;
+  price: number;
+  product: object;
+  quantity: number;
+}
+
+class ProductForm extends Component<IProps, IState> {
+  public state: any;
+
   constructor(props) {
-    super(props)
-    
-    this.state = {}
-    
-    this.save = this.save.bind(this)
+    super(props);
+
+    this.save = this.save.bind(this);
   }
-  
-  componentWillReceiveProps(props) {
-    this.setState({...props.product})
+
+  public componentWillReceiveProps(props) {
+    this.setState({...props.product});
   }
-  
-  save() {
-    const product = this.state
-    const { quantity, price } = product
-    product.total = (quantity * price).toFixed(2)
+
+  public save() {
+    const product = this.state;
+    const { quantity, price } = product;
+    product.total = (quantity * price).toFixed(2);
     if (!product.id) {
-      product.id = Date.now()
-      this.props.dispatchSaveProduct(product)
+      product.id = Date.now();
+      this.props.dispatchSaveProduct(product);
     } else {
-      this.props.dispatchUpdateProduct(product)
+      this.props.dispatchUpdateProduct(product);
     }
-    this.props.dispatchIncreaseTotal(product.total)
-    
-    this.cleanForm()
+    this.props.dispatchIncreaseTotal(product.total);
+
+    this.cleanForm();
   }
-  
-  cleanForm() {
+
+  public cleanForm() {
     this.setState({
+      id: 0,
       name: '',
-      quantity: '',
-      price: '',
-      id: false
-    })
+      price: 0,
+      quantity: 0
+    });
   }
-  
-  render() {
+
+  public render() {
     return (
       <form>
         <div className="row">
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div className="form-group">
-              <label for="name">Produto</label>
+              <label>Produto</label>
               <input
-                onChange={event => this.setState({name: event.target.value})}
+                onChange={(event) => this.setState({name: event.target.value})}
                 type="text"
                 className="form-control"
                 id="name"
@@ -60,9 +76,9 @@ class ProductForm extends Component {
         <div className="row">
           <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
             <div className="form-group">
-              <label for="quantity">Quantidade</label>
+              <label>Quantidade</label>
               <input
-                onChange={event => this.setState({quantity: event.target.value})}
+                onChange={(event) => this.setState({quantity: Number.parseFloat(event.target.value)})}
                 type="number"
                 className="form-control"
                 id="quantity"
@@ -73,9 +89,9 @@ class ProductForm extends Component {
           </div>
           <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
             <div className="form-group">
-              <label for="price">Preço</label>
+              <label>Preço</label>
               <input
-                onChange={event => this.setState({price: Number.parseFloat(event.target.value).toFixed(2)})}
+                onChange={(event) => this.setState({price: Number.parseFloat(event.target.value)})}
                 type="number"
                 className="form-control"
                 id="price"
@@ -91,31 +107,31 @@ class ProductForm extends Component {
           </div>
         </div>
       </form>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => {
-  const { products, product } = state
+  const { products, product } = state;
   return {
-    products,
-    product
-  }
-}
+    product,
+    products
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchSaveProduct: (product) => {
-    dispatch(saveProduct(product))
-  },
-  dispatchUpdateProduct: (product) => {
-    dispatch(updateProduct(product))
+  dispatchDecreaseTotal: (value) => {
+    dispatch(decreaseTotal(value));
   },
   dispatchIncreaseTotal: (value) => {
-    dispatch(increaseTotal(value))
+    dispatch(increaseTotal(value));
   },
-  dispatchDecreaseTotal: (value) => {
-    dispatch(decreaseTotal(value))
+  dispatchSaveProduct: (product) => {
+    dispatch(saveProduct(product));
+  },
+  dispatchUpdateProduct: (product) => {
+    dispatch(updateProduct(product));
   }
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductForm)
+export default connect(mapStateToProps, mapDispatchToProps)(ProductForm);
