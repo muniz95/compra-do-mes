@@ -1,27 +1,27 @@
 import { DECREASE_TOTAL, EDIT_PRODUCT, EMPTY_PRODUCTS, EMPTY_TOTAL, INCREASE_TOTAL, REMOVE_PRODUCT, SAVE_PRODUCT, UPDATE_PRODUCT } from '../constants';
 
-export const saveProduct = (product) => {
+export const saveProduct = (product: any) => {
   return {
     payload: product,
     type: SAVE_PRODUCT
   };
 };
 
-export const editProduct = (product) => {
+export const editProduct = (product: any) => {
   return {
     payload: product,
     type: EDIT_PRODUCT
   };
 };
 
-export const updateProduct = (product) => {
+export const updateProduct = (product: any) => {
   return {
     payload: product,
     type: UPDATE_PRODUCT
   };
 };
 
-export const removeProduct = (product) => {
+export const removeProduct = (product: any) => {
   return {
     payload: product,
     type: REMOVE_PRODUCT
@@ -32,14 +32,14 @@ export const emptyProducts = () => {
   return { type: EMPTY_PRODUCTS };
 };
 
-export const increaseTotal = (value) => {
+export const increaseTotal = (value: any) => {
   return {
     payload: value,
     type: INCREASE_TOTAL
   };
 };
 
-export const decreaseTotal = (value) => {
+export const decreaseTotal = (value: any) => {
   return {
     payload: value,
     type: DECREASE_TOTAL

@@ -1,28 +1,29 @@
-import { Component } from 'inferno';
-import { connect } from 'inferno-redux';
-import Product from './components/Product';
-import ProductForm from './components/ProductForm';
-import { emptyProducts, emptyTotal } from './redux/actions';
+import React from "react";
+import { connect } from "react-redux";
+import Product from "./components/Product";
+import ProductForm from "./components/ProductForm";
+import { emptyProducts, emptyTotal } from "./redux/actions";
 // import './App.css'
 
 interface IProps {
-  dispatchEmptyProducts: () => {} | null;
-  dispatchEmptyTotal: () => {} | null;
-  products: object[];
-  total: string;
+  dispatchEmptyProducts: () => void;
+  dispatchEmptyTotal: () => void;
+  products: any[];
 }
 interface IState {
-  products: object[] | null;
+  products: any[];
+  total: number;
 }
 
-class App extends Component<IProps, IState> {
-  constructor(props) {
+class App extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
 
     this.state = {
-      products: []
+      products: [],
+      total: 0
     };
-    window.console.log('foi');
+    window.console.log("foi");
 
     this.clean = this.clean.bind(this);
   }
@@ -35,41 +36,42 @@ class App extends Component<IProps, IState> {
   public render() {
     const { products } = this.props;
     const btnCleanList = products.length
-      ? [
-        <div className="row">&nbsp;</div>,
+      ? <React.Fragment>
+          <div className="row">&nbsp;</div>
+          <div className="row">
+            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <button className="btn btn-danger" onClick={this.clean}>Limpar lista</button>
+            </div>
+          </div>
+        </React.Fragment>
+      : null;
+    return (
+      <React.Fragment>
         <div className="row">
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <button className="btn btn-danger" onClick={this.clean}>Limpar lista</button>
+            <ProductForm />
           </div>
         </div>
-        ]
-      :
-        null;
-    return ([
-      <div className="row">
-        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <ProductForm />
+        <div className="row">&nbsp;</div>
+        <div className="row">
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h3>Total da compra: R$ {this.state.total.toFixed(2)}</h3>
+          </div>
         </div>
-      </div>,
-      <div className="row">&nbsp;</div>,
-      <div className="row">
-        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h3>Total da compra: R$ {Number.parseFloat(this.props.total).toFixed(2)}</h3>
+        <div className="row">&nbsp;</div>
+        <div className="row">
+          { products.map((product: any) =>
+              <Product key={product.id} quantity={product.quantity} price={product.price} />
+          ) }
         </div>
-      </div>,
-      <div className="row">&nbsp;</div>,
-      <div className="row">
-        { products.map((product: object) =>
-            <Product {...product}/>
-        ) }
-      </div>,
-      { btnCleanList },
-      <div className="row">&nbsp;</div>
-    ]) as JSX.Element[];
+        { btnCleanList }
+        <div className="row">&nbsp;</div>
+      </React.Fragment>
+    );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: IState) => {
   const { products, total } = state;
   return {
     products,
@@ -77,13 +79,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatchEmptyProducts: () => {
-    dispatch(emptyProducts());
-  },
-  dispatchEmptyTotal: () => {
-    dispatch(emptyTotal());
-  }
-});
+const mapDispatchToProps = {
+  dispatchEmptyProducts: emptyProducts,
+  dispatchEmptyTotal: emptyTotal
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

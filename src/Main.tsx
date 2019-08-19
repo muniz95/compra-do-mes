@@ -1,3 +1,4 @@
+import React from 'react';
 import Header from './components/Header';
 
 interface IProps {
@@ -5,10 +6,10 @@ interface IProps {
 }
 
 const Main = ({ children }: IProps) => (
-  <div>
+  <React.Fragment>
     <Header />
     <div className="container">{children}</div>
-  </div>
+  </React.Fragment>
 );
 
 export default Main;

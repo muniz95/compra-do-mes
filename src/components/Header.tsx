@@ -1,16 +1,16 @@
-import { Component } from 'inferno';
+import React from 'react';
 // import './Header.css'
 
-export default class Header extends Component<{}, {}> {
-  public render() {
-    return (
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <div class="navbar-brand">Compra do mês</div>
-          </div>
+const Header: React.FC = () => {
+  return (
+    <nav className="navbar navbar-default">
+      <div className="container-fluid">
+        <div className="navbar-header">
+          <div className="navbar-brand">Compra do mês</div>
         </div>
-      </nav>
-    );
-  }
+      </div>
+    </nav>
+  );
 }
+
+export default Header;

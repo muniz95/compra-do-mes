@@ -1,31 +1,25 @@
 {
-    "version": "2.2.2",
-    "compilerOptions": {
-        "target": "es6",
-        "module": "es6",
-        "allowJs": false,
-        "allowSyntheticDefaultImports": true,
-        "preserveConstEnums": true,
-        "sourceMap": true,
-        "moduleResolution": "node",
-        "lib": [
-            "es6",
-            "es7",
-            "dom"
-        ],
-        "types": [
-            "inferno"
-        ],
-        "jsx": "preserve",
-        "noUnusedLocals": true,
-        "strictNullChecks": true,
-        "removeComments": false
-    },
-    "include": [
-        "src/**/*"
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
     ],
-    "exclude": [
-        "node_modules"
-    ],
-    "compileOnSave": false
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react"
+  },
+  "include": [
+    "src"
+  ]
 }

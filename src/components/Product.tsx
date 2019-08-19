@@ -1,5 +1,5 @@
-import { Component } from 'inferno';
-import { connect } from 'inferno-redux';
+import React from 'react';
+import { connect } from 'react-redux';
 import { decreaseTotal, editProduct, increaseTotal, removeProduct } from '../redux/actions';
 
 interface IProps {
@@ -13,7 +13,7 @@ interface IState {
   product: any;
 }
 
-class Product extends Component<IProps, IState> {
+class Product extends React.Component<IProps, IState> {
   public state: any;
 
   constructor(props: IProps) {
@@ -51,12 +51,12 @@ class Product extends Component<IProps, IState> {
     this.props.dispatchRemoveProduct(product);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <div class="card">
-          <div class="card-block">
-            <h4 class="card-title">{this.state.product.name}</h4>
+        <div className="card">
+          <div className="card-block">
+            <h4 className="card-title">{this.state.product.name}</h4>
             <div className="row">
               <div className="col"><b>Qtd.</b></div>
               <div className="col"><b>Preço</b></div>
@@ -83,19 +83,11 @@ class Product extends Component<IProps, IState> {
   }
 }
 
-const mapDispatchToProps = (dispatch: any) => ({
-  dispatchDecreaseTotal: (value: any) => {
-    dispatch(decreaseTotal(value));
-  },
-  dispatchEditProduct: (product: any) => {
-    dispatch(editProduct(product));
-  },
-  dispatchIncreaseTotal: (value: any) => {
-    dispatch(increaseTotal(value));
-  },
-  dispatchRemoveProduct: (product: any) => {
-    dispatch(removeProduct(product));
-  }
-});
+const mapDispatchToProps = {
+  dispatchDecreaseTotal: decreaseTotal,
+  dispatchEditProduct: editProduct,
+  dispatchIncreaseTotal: increaseTotal,
+  dispatchRemoveProduct: removeProduct
+};
 
 export default connect(null, mapDispatchToProps)(Product);

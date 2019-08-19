@@ -1,7 +1,12 @@
 import { combineReducers } from 'redux';
 import { DECREASE_TOTAL, EDIT_PRODUCT, EMPTY_PRODUCTS, EMPTY_TOTAL, INCREASE_TOTAL, REMOVE_PRODUCT, SAVE_PRODUCT, UPDATE_PRODUCT } from '../constants';
 
-const products = (state = [], action) => {
+interface IAction {
+  type: string;
+  payload: any;
+}
+
+const products = (state = [], action: IAction) => {
   switch (action.type) {
     case UPDATE_PRODUCT:
       return [...state.filter((s: any) => s.id !== action.payload.id), action.payload];
@@ -16,7 +21,7 @@ const products = (state = [], action) => {
   }
 };
 
-const product = (state = {}, action) => {
+const product = (state = {}, action: IAction) => {
   switch (action.type) {
     case EDIT_PRODUCT:
       return action.payload;
@@ -25,7 +30,7 @@ const product = (state = {}, action) => {
   }
 };
 
-const total = (state = 0, action) => {
+const total = (state = 0, action: IAction) => {
   switch (action.type) {
     case INCREASE_TOTAL:
       return state + Number.parseFloat(action.payload);
@@ -42,4 +47,4 @@ export default combineReducers({
   product,
   products,
   total
-});
+} as any);
