@@ -28,14 +28,14 @@ class App extends React.Component<IProps, IState> {
     this.clean = this.clean.bind(this);
   }
 
-  public clean() {
+  public clean(): void {
     this.props.dispatchEmptyTotal();
     this.props.dispatchEmptyProducts();
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { products } = this.props;
-    const btnCleanList = products.length
+    const btnCleanList: JSX.Element = products.length
       ? <React.Fragment>
           <div className="row">&nbsp;</div>
           <div className="row">
@@ -44,7 +44,7 @@ class App extends React.Component<IProps, IState> {
             </div>
           </div>
         </React.Fragment>
-      : null;
+      : <React.Fragment />;
     return (
       <React.Fragment>
         <div className="row">

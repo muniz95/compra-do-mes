@@ -1,6 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { decreaseTotal, editProduct, increaseTotal, removeProduct } from '../redux/actions';
+import React from "react";
+import { connect } from "react-redux";
+import { decreaseTotal, editProduct, increaseTotal, removeProduct } from "../redux/actions";
 
 interface IProps {
   quantity: number;
@@ -27,9 +27,9 @@ class Product extends React.Component<IProps, IState> {
     this.editProduct = this.editProduct.bind(this);
   }
 
-  public componentWillReceiveProps(props: IProps) {
+  public componentDidUpdate(props: IProps): void {
     const { quantity, price } = props;
-    const total = (quantity * price).toFixed(2);
+    const total: string = (quantity * price).toFixed(2);
     this.setState({
       product: {
         ...props,
@@ -38,14 +38,14 @@ class Product extends React.Component<IProps, IState> {
     });
   }
 
-  public editProduct() {
+  public editProduct(): void {
     const { product } = this.state;
     this.props.dispatchDecreaseTotal(product.total);
     this.props.dispatchEditProduct(product);
     window.scrollTo(0, 0);
   }
 
-  public removeProduct() {
+  public removeProduct(): void {
     const { product } = this.state;
     this.props.dispatchDecreaseTotal(product.total);
     this.props.dispatchRemoveProduct(product);

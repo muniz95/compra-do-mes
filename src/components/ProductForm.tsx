@@ -1,30 +1,31 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { decreaseTotal, increaseTotal, saveProduct, updateProduct } from '../redux/actions';
+import React from "react";
+import { connect } from "react-redux";
+import { decreaseTotal, increaseTotal, saveProduct, updateProduct } from "../redux/actions";
+import Product from "../models/Product";
 
 interface IProps {
-  dispatchSaveProduct: (product: any) => void;
-  dispatchUpdateProduct: (product: any) => void;
+  dispatchSaveProduct: (product: Product) => void;
+  dispatchUpdateProduct: (product: Product) => void;
   dispatchIncreaseTotal: (value: any) => void;
   dispatchDecreaseTotal: (value: any) => void;
-  product: any;
+  product: Product;
 }
 
 interface IState {
   id: number;
   name: string;
   price: number;
-  product: any;
-  products: any[];
+  product: Product;
+  products: Product[];
   quantity: number;
 }
 
 class ProductForm extends React.Component<IProps, IState> {
   public state: IState = {
     id: 0,
-    name: '',
+    name: "",
     price: 0,
-    product: {},
+    product: new Product(),
     products: [],
     quantity: 0
   };
@@ -35,11 +36,11 @@ class ProductForm extends React.Component<IProps, IState> {
     this.save = this.save.bind(this);
   }
 
-  public componentWillReceiveProps(props: IProps) {
-    this.setState({...props.product});
+  public componentDidUpdate(props: IProps): void {
+    this.setState({product: props.product});
   }
 
-  public save() {
+  public save(): void {
     const { product } = this.state;
     const { quantity, price } = product;
     product.total = (quantity * price).toFixed(2);
@@ -54,16 +55,16 @@ class ProductForm extends React.Component<IProps, IState> {
     this.cleanForm();
   }
 
-  public cleanForm() {
+  public cleanForm(): void {
     this.setState({
       id: 0,
-      name: '',
+      name: "",
       price: 0,
       quantity: 0
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <form>
         <div className="row">
