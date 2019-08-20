@@ -1,19 +1,31 @@
-import { combineReducers } from 'redux';
-import { DECREASE_TOTAL, EDIT_PRODUCT, EMPTY_PRODUCTS, EMPTY_TOTAL, INCREASE_TOTAL, REMOVE_PRODUCT, SAVE_PRODUCT, UPDATE_PRODUCT } from '../constants';
+import { combineReducers } from "redux";
+import {
+  DECREASE_TOTAL,
+  EDIT_PRODUCT,
+  EMPTY_PRODUCTS,
+  EMPTY_TOTAL,
+  INCREASE_TOTAL,
+  REMOVE_PRODUCT,
+  SAVE_PRODUCT,
+  UPDATE_PRODUCT
+} from "../constants";
+import Product from "../../models/Product";
 
 interface IAction {
   type: string;
   payload: any;
 }
 
+const byIdAsc = (a: Product, b: Product) => a.id - b.id;
+
 const products = (state = [], action: IAction) => {
   switch (action.type) {
     case UPDATE_PRODUCT:
-      return [...state.filter((s: any) => s.id !== action.payload.id), action.payload];
+      return [...state.filter((s: any) => s.id !== action.payload.id), action.payload].sort(byIdAsc);
     case SAVE_PRODUCT:
-      return [...state, action.payload];
+      return [...state, action.payload].sort(byIdAsc);
     case REMOVE_PRODUCT:
-      return [...state.filter((s: any) => s.id !== action.payload.id)];
+      return [...state.filter((s: any) => s.id !== action.payload.id)].sort(byIdAsc);
     case EMPTY_PRODUCTS:
       return [];
     default:

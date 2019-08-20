@@ -1,30 +1,40 @@
-import { DECREASE_TOTAL, EDIT_PRODUCT, EMPTY_PRODUCTS, EMPTY_TOTAL, INCREASE_TOTAL, REMOVE_PRODUCT, SAVE_PRODUCT, UPDATE_PRODUCT } from '../constants';
+import Product from "../../models/Product";
+import {
+  DECREASE_TOTAL,
+  EDIT_PRODUCT,
+  EMPTY_PRODUCTS,
+  EMPTY_TOTAL,
+  INCREASE_TOTAL,
+  REMOVE_PRODUCT,
+  SAVE_PRODUCT,
+  UPDATE_PRODUCT,
+} from "../constants";
 
-export const saveProduct = (product: any) => {
+export const saveProduct = (product: Product) => {
   return {
     payload: product,
-    type: SAVE_PRODUCT
+    type: SAVE_PRODUCT,
   };
 };
 
-export const editProduct = (product: any) => {
+export const editProduct = (product: Product) => {
   return {
     payload: product,
-    type: EDIT_PRODUCT
+    type: EDIT_PRODUCT,
   };
 };
 
-export const updateProduct = (product: any) => {
+export const updateProduct = (product: Product) => {
   return {
     payload: product,
-    type: UPDATE_PRODUCT
+    type: UPDATE_PRODUCT,
   };
 };
 
-export const removeProduct = (product: any) => {
+export const removeProduct = (product: Product) => {
   return {
     payload: product,
-    type: REMOVE_PRODUCT
+    type: REMOVE_PRODUCT,
   };
 };
 
@@ -35,14 +45,14 @@ export const emptyProducts = () => {
 export const increaseTotal = (value: any) => {
   return {
     payload: value,
-    type: INCREASE_TOTAL
+    type: INCREASE_TOTAL,
   };
 };
 
 export const decreaseTotal = (value: any) => {
   return {
     payload: value,
-    type: DECREASE_TOTAL
+    type: DECREASE_TOTAL,
   };
 };
 

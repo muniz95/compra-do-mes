@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { decreaseTotal, increaseTotal, saveProduct, updateProduct } from "../redux/actions";
+import { decreaseTotal, increaseTotal, saveProduct, updateProduct, editProduct } from "../redux/actions";
 import Product from "../models/Product";
 
 interface IProps {
   dispatchSaveProduct: (product: Product) => void;
   dispatchUpdateProduct: (product: Product) => void;
+  dispatchEditProduct: (product: Product) => void;
   dispatchIncreaseTotal: (value: any) => void;
   dispatchDecreaseTotal: (value: any) => void;
   product: Product;
@@ -16,7 +17,6 @@ interface IState {
   name: string;
   price: number;
   product: Product;
-  products: Product[];
   quantity: number;
 }
 
@@ -26,7 +26,6 @@ class ProductForm extends React.Component<IProps, IState> {
     name: "",
     price: 0,
     product: new Product(),
-    products: [],
     quantity: 0
   };
 
@@ -36,17 +35,24 @@ class ProductForm extends React.Component<IProps, IState> {
     this.save = this.save.bind(this);
   }
 
+  static getDerivedStateFromProps(prevProps: IProps, currentState: IState) {
+    if(Object.keys(prevProps.product).length) {
+      prevProps.dispatchEditProduct({} as Product);
+      return {...prevProps.product};
+    }
+    return null;
+  }
+
   public save(): void {
-    const product = {
-      id: 0,
+    const product: Product = {
+      id: this.state.id,
       name: this.state.name,
       price: this.state.price,
       quantity: this.state.quantity,
-      total: "0"
-    }
-    // const { product } = this.state;
+      total: 0
+    };
     const { quantity, price } = product;
-    product.total = (quantity * price).toFixed(2);
+    product.total = quantity * price;
     if (!product.id) {
       product.id = Date.now();
       this.props.dispatchSaveProduct(product);
@@ -124,10 +130,9 @@ class ProductForm extends React.Component<IProps, IState> {
 }
 
 const mapStateToProps = (state: IState) => {
-  const { products, product } = state;
+  const { product } = state;
   return {
-    product,
-    products
+    product
   };
 };
 
@@ -135,7 +140,8 @@ const mapDispatchToProps = {
   dispatchDecreaseTotal: decreaseTotal,
   dispatchIncreaseTotal: increaseTotal,
   dispatchSaveProduct: saveProduct,
-  dispatchUpdateProduct: updateProduct
+  dispatchUpdateProduct: updateProduct,
+  dispatchEditProduct: editProduct
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductForm);

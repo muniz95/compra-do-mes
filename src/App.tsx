@@ -1,17 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
-import Product from "./components/ProductComponent";
+import ProductComponent from "./components/ProductComponent";
 import ProductForm from "./components/ProductForm";
 import { emptyProducts, emptyTotal } from "./redux/actions";
+import Product from "./models/Product";
 // import './App.css'
 
 interface IProps {
   dispatchEmptyProducts: () => void;
   dispatchEmptyTotal: () => void;
-  products: any[];
+  products: Product[];
+  total: number;
 }
+
 interface IState {
-  products: any[];
+  products: Product[];
   total: number;
 }
 
@@ -23,7 +26,6 @@ class App extends React.Component<IProps, IState> {
       products: [],
       total: 0
     };
-    window.console.log("foi");
 
     this.clean = this.clean.bind(this);
   }
@@ -34,7 +36,7 @@ class App extends React.Component<IProps, IState> {
   }
 
   public render(): JSX.Element {
-    const { products } = this.props;
+    const { products, total } = this.props;
     const btnCleanList: JSX.Element = products.length
       ? <React.Fragment>
           <div className="row">&nbsp;</div>
@@ -55,13 +57,13 @@ class App extends React.Component<IProps, IState> {
         <div className="row">&nbsp;</div>
         <div className="row">
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>Total da compra: R$ {this.state.total.toFixed(2)}</h3>
+            <h3>Total da compra: R$ {total.toFixed(2)}</h3>
           </div>
         </div>
         <div className="row">&nbsp;</div>
         <div className="row">
           { products.map((product: any) =>
-              <Product key={product.id} product={product} />
+              <ProductComponent key={product.id} product={product} />
           ) }
         </div>
         { btnCleanList }
@@ -72,11 +74,7 @@ class App extends React.Component<IProps, IState> {
 }
 
 const mapStateToProps = (state: IState) => {
-  const { products, total } = state;
-  return {
-    products,
-    total
-  };
+  return {...state};
 };
 
 const mapDispatchToProps = {
