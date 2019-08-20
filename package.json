@@ -3,25 +3,42 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "4.0.0-alpha.6",
+    "@types/jest": "24.0.17",
+    "@types/node": "12.7.2",
+    "@types/react": "16.9.2",
+    "@types/react-dom": "16.8.5",
+    "@types/react-redux": "^7.1.2",
+    "@types/react-router-dom": "^4.3.4",
+    "@types/styled-components": "^4.1.18",
+    "bootstrap": "^4.3.1",
     "font-awesome": "^4.7.0",
-    "inferno": "^5.0.4",
-    "inferno-component": "^5.0.4",
-    "inferno-create-class": "^5.0.4",
-    "inferno-redux": "^5.0.4",
-    "inferno-router": "^5.0.4",
-    "inferno-scripts": "^6.3.0",
-    "redux": "^3.7.2"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.0",
+    "react-scripts": "3.1.1",
+    "redux": "^4.0.4",
+    "styled-components": "^4.3.2",
+    "typescript": "3.5.3"
   },
   "scripts": {
-    "start": "inferno-scripts start",
-    "build": "inferno-scripts build",
-    "test": "inferno-scripts test --env=jsdom",
-    "eject": "inferno-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "surge ./build -d https://compra-do-mes.surge.sh"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "devDependencies": {
-    "surge": "^0.19.0"
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
