@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import Product from "./components/Product";
+import Product from "./components/ProductComponent";
 import ProductForm from "./components/ProductForm";
 import { emptyProducts, emptyTotal } from "./redux/actions";
 // import './App.css'
@@ -61,7 +61,7 @@ class App extends React.Component<IProps, IState> {
         <div className="row">&nbsp;</div>
         <div className="row">
           { products.map((product: any) =>
-              <Product key={product.id} quantity={product.quantity} price={product.price} />
+              <Product key={product.id} product={product} />
           ) }
         </div>
         { btnCleanList }

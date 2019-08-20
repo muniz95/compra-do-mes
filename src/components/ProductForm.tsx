@@ -36,12 +36,15 @@ class ProductForm extends React.Component<IProps, IState> {
     this.save = this.save.bind(this);
   }
 
-  public componentDidUpdate(props: IProps): void {
-    this.setState({product: props.product});
-  }
-
   public save(): void {
-    const { product } = this.state;
+    const product = {
+      id: 0,
+      name: this.state.name,
+      price: this.state.price,
+      quantity: this.state.quantity,
+      total: "0"
+    }
+    // const { product } = this.state;
     const { quantity, price } = product;
     product.total = (quantity * price).toFixed(2);
     if (!product.id) {

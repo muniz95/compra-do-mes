@@ -1,19 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import { decreaseTotal, editProduct, increaseTotal, removeProduct } from "../redux/actions";
+import Product from "../models/Product";
 
 interface IProps {
-  quantity: number;
-  price: number;
+  product: Product;
   dispatchDecreaseTotal: (total: number) => {};
-  dispatchEditProduct: (product: any) => {};
-  dispatchRemoveProduct: (product: any) => {};
+  dispatchEditProduct: (product: Product) => {};
+  dispatchRemoveProduct: (product: Product) => {};
 }
 interface IState {
-  product: any;
+  product: Product;
 }
 
-class Product extends React.Component<IProps, IState> {
+class ProductComponent extends React.Component<IProps, IState> {
   public state: any;
 
   constructor(props: IProps) {
@@ -28,14 +28,9 @@ class Product extends React.Component<IProps, IState> {
   }
 
   public componentDidUpdate(props: IProps): void {
-    const { quantity, price } = props;
+    const { quantity, price } = props.product;
     const total: string = (quantity * price).toFixed(2);
-    this.setState({
-      product: {
-        ...props,
-        total
-      }
-    });
+    this.setState({product: {...props.product, total}});
   }
 
   public editProduct(): void {
@@ -90,4 +85,4 @@ const mapDispatchToProps = {
   dispatchRemoveProduct: removeProduct
 };
 
-export default connect(null, mapDispatchToProps)(Product);
+export default connect(null, mapDispatchToProps)(ProductComponent);
