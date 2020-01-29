@@ -30,13 +30,7 @@ class ProductForm extends React.Component<IProps, IState> {
     quantity: 0
   };
 
-  constructor(props: IProps) {
-    super(props);
-
-    this.save = this.save.bind(this);
-  }
-
-  public save(): void {
+  save = () => {
     const product = {
       id: 0,
       name: this.state.name,
@@ -80,7 +74,7 @@ class ProductForm extends React.Component<IProps, IState> {
                 className="form-control"
                 id="name"
                 placeholder="Arroz, feijão, ..."
-                value={this.state.name}
+                value={this.props.product.name}
               />
             </div>
           </div>
@@ -95,7 +89,7 @@ class ProductForm extends React.Component<IProps, IState> {
                 className="form-control"
                 id="quantity"
                 placeholder="Quantidade"
-                value={this.state.quantity}
+                value={this.props.product.quantity}
               />
             </div>
           </div>
@@ -108,7 +102,7 @@ class ProductForm extends React.Component<IProps, IState> {
                 className="form-control"
                 id="price"
                 placeholder="Preço unitário"
-                value={this.state.price}
+                value={this.props.product.price}
               />
             </div>
           </div>

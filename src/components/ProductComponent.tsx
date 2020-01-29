@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { decreaseTotal, editProduct, increaseTotal, removeProduct } from "../redux/actions";
 import Product from "../models/Product";
+import "./ProductComponent.scss";
 
 interface IProps {
   product: Product;
@@ -20,11 +21,8 @@ class ProductComponent extends React.Component<IProps, IState> {
     super(props);
 
     this.state = {
-      product: {...props}
+      product: props.product
     };
-
-    this.removeProduct = this.removeProduct.bind(this);
-    this.editProduct = this.editProduct.bind(this);
   }
 
   public componentDidUpdate(props: IProps): void {
@@ -33,14 +31,14 @@ class ProductComponent extends React.Component<IProps, IState> {
     this.setState({product: {...props.product, total}});
   }
 
-  public editProduct(): void {
+  editProduct = (): void => {
     const { product } = this.state;
     this.props.dispatchDecreaseTotal(product.total);
     this.props.dispatchEditProduct(product);
     window.scrollTo(0, 0);
   }
 
-  public removeProduct(): void {
+  removeProduct = (): void => {
     const { product } = this.state;
     this.props.dispatchDecreaseTotal(product.total);
     this.props.dispatchRemoveProduct(product);
@@ -48,28 +46,26 @@ class ProductComponent extends React.Component<IProps, IState> {
 
   public render(): JSX.Element {
     return (
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <div className="card">
-          <div className="card-block">
-            <h4 className="card-title">{this.state.product.name}</h4>
-            <div className="row">
-              <div className="col"><b>Qtd.</b></div>
-              <div className="col"><b>Preço</b></div>
-              <div className="col"><b>Preço total</b></div>
+      <div className="card-container">
+        <div className="card-block">
+          <h4 className="card-title">{this.state.product.name}</h4>
+          <div className="row">
+            <div className="col"><b>Qtd.</b></div>
+            <div className="col"><b>Preço</b></div>
+            <div className="col"><b>Total</b></div>
+          </div>
+          <div className="row">
+            <div className="col">{this.state.product.quantity}</div>
+            <div className="col">R$ {this.state.product.price}</div>
+            <div className="col">R$ {this.state.product.total}</div>
+          </div>
+          <div className="row">&nbsp;</div>
+          <div className="row">
+            <div className="col text-center">
+              <i className="fa fa-2x fa-pencil" onClick={this.editProduct}></i>
             </div>
-            <div className="row">
-              <div className="col">{this.state.product.quantity}</div>
-              <div className="col">R$ {this.state.product.price}</div>
-              <div className="col">R$ {this.state.product.total}</div>
-            </div>
-            <div className="row">&nbsp;</div>
-            <div className="row">
-              <div className="col text-center">
-                <i className="fa fa-2x fa-pencil" onClick={this.editProduct}></i>
-              </div>
-              <div className="col text-center">
-                <i className="fa fa-2x fa-trash" onClick={this.removeProduct}></i>
-              </div>
+            <div className="col text-center">
+              <i className="fa fa-2x fa-trash" onClick={this.removeProduct}></i>
             </div>
           </div>
         </div>

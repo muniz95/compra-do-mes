@@ -30,7 +30,7 @@ const product = (state = {}, action: IAction) => {
   }
 };
 
-const total = (state = 0, action: IAction) => {
+const total = (state = 0, action: IAction): number => {
   switch (action.type) {
     case INCREASE_TOTAL:
       return state + Number.parseFloat(action.payload);
