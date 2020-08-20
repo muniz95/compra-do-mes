@@ -39,35 +39,34 @@ class App extends React.Component<IProps, IState> {
     const { products, total } = this.props;
     const btnCleanList: JSX.Element = products.length
       ? <React.Fragment>
-          <div className="row">&nbsp;</div>
-          <div className="row">
-            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <button className="btn btn-danger" onClick={this.clean}>Limpar lista</button>
+          <div>
+            <div>
+              <button onClick={this.clean}>Limpar lista</button>
             </div>
           </div>
         </React.Fragment>
       : <React.Fragment />;
     return (
       <React.Fragment>
-        <div className="row">
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div>
+          <div>
             <ProductForm />
           </div>
         </div>
-        <div className="row">&nbsp;</div>
-        <div className="row">
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div>&nbsp;</div>
+        <div>
+          <div>
             <h3>Total da compra: R$ {total.toFixed(2)}</h3>
           </div>
         </div>
-        <div className="row">&nbsp;</div>
-        <div className="row">
+        <div>&nbsp;</div>
+        <div>
           { products.map((product: any) =>
               <ProductComponent key={product.id} product={product} />
           ) }
         </div>
         { btnCleanList }
-        <div className="row">&nbsp;</div>
+        <div>&nbsp;</div>
       </React.Fragment>
     );
   }
