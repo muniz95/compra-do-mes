@@ -10,17 +10,16 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
-    "@types/react-redux": "^7.1.2",
+    "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^4.3.4",
-    "@types/styled-components": "^4.1.18",
-    "bootstrap": "^4.5.2",
+    "@types/styled-components": "^4.4.3",
     "font-awesome": "^4.7.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-redux": "^7.1.0",
+    "react-redux": "^7.2.1",
     "react-scripts": "3.4.3",
-    "redux": "^4.0.4",
-    "styled-components": "^4.3.2",
+    "redux": "^4.0.5",
+    "styled-components": "^4.4.1",
     "typescript": "~3.7.2"
   },
   "scripts": {
@@ -43,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "node-sass": "^4.14.1"
   }
 }

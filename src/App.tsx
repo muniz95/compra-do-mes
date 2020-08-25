@@ -1,10 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import ProductComponent from "./components/ProductComponent";
+import ProductCard from "./components/ProductCard";
 import ProductForm from "./components/ProductForm";
 import { emptyProducts, emptyTotal } from "./redux/actions";
 import Product from "./models/Product";
-// import './App.css'
 
 interface IProps {
   dispatchEmptyProducts: () => void;
@@ -24,7 +23,7 @@ class App extends React.Component<IProps, IState> {
 
     this.state = {
       products: [],
-      total: 0
+      total: 0,
     };
 
     this.clean = this.clean.bind(this);
@@ -37,48 +36,46 @@ class App extends React.Component<IProps, IState> {
 
   public render(): JSX.Element {
     const { products, total } = this.props;
-    const btnCleanList: JSX.Element = products.length
-      ? <React.Fragment>
-          <div>
-            <div>
-              <button onClick={this.clean}>Limpar lista</button>
-            </div>
-          </div>
-        </React.Fragment>
-      : <React.Fragment />;
+    const btnCleanList: JSX.Element = products.length ? (
+      <React.Fragment>
+        <button onClick={this.clean}>Limpar lista</button>
+      </React.Fragment>
+    ) : (
+      <React.Fragment />
+    );
     return (
       <React.Fragment>
         <div>
-          <div>
-            <ProductForm />
-          </div>
+          <ProductForm />
         </div>
-        <div>&nbsp;</div>
         <div>
-          <div>
-            <h3>Total da compra: R$ {total.toFixed(2)}</h3>
-          </div>
+          <h3>Total da compra: R$ {total.toFixed(2)}</h3>
+          {btnCleanList}
         </div>
-        <div>&nbsp;</div>
-        <div>
-          { products.map((product: any) =>
-              <ProductComponent key={product.id} product={product} />
-          ) }
+        <div
+          style={{
+            display: "flex",
+            flexFlow: "wrap",
+            maxHeight: "500px",
+            overflow: "auto",
+          }}
+        >
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
         </div>
-        { btnCleanList }
-        <div>&nbsp;</div>
       </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = (state: IState) => {
-  return {...state};
+  return { ...state };
 };
 
 const mapDispatchToProps = {
   dispatchEmptyProducts: emptyProducts,
-  dispatchEmptyTotal: emptyTotal
+  dispatchEmptyTotal: emptyTotal,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
