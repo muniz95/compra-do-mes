@@ -37,7 +37,8 @@ export const ProductCardColumn = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
+  height: inherit;
+  `;
 
 export const ProductCardRow = styled.div`
   display: flex;
@@ -46,6 +47,7 @@ export const ProductCardRow = styled.div`
   justify-content: center;
   padding: 5px;
   border-radius: 5px;
+  height: inherit;
 `;
 
 export default {

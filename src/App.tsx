@@ -38,7 +38,7 @@ class App extends React.Component<IProps, IState> {
     const { products, total } = this.props;
     const btnCleanList: JSX.Element = products.length ? (
       <React.Fragment>
-        <button onClick={this.clean}>Limpar lista</button>
+        <button onClick={this.clean} className="danger">Limpar lista</button>
       </React.Fragment>
     ) : (
       <React.Fragment />
@@ -48,7 +48,7 @@ class App extends React.Component<IProps, IState> {
         <div style={{marginTop: '5px', marginBottom: '5px'}}>
           <ProductForm />
         </div>
-        <div style={{marginTop: '5px', marginBottom: '10px'}}>
+        <div style={{marginTop: '5px', marginBottom: '10px', marginLeft: '5px'}}>
           <h3>Total da compra: R$ {total.toFixed(2)}</h3>
           {btnCleanList}
         </div>

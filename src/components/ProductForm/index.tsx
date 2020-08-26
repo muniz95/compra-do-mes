@@ -76,7 +76,7 @@ class ProductForm extends React.Component<IProps, IState> {
 
   public render(): JSX.Element {
     return (
-      <form>
+      <form autoComplete="off">
         <S.FormFieldArea>
           <label>Produto</label>
           <input

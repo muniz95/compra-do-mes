@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   outline: none;
+  color: #1f1f1f;
 }
 
 body {
@@ -32,22 +33,31 @@ button {
   height: 30px;
   border-radius: 10px;
   border-style: none;
-  background-color: #5f9ea0;
+  color: #5f9ea0;
+  font-weight: bolder;
   -moz-transition: all .2s ease-in;
   -o-transition: all .2s ease-in;
   -webkit-transition: all .2s ease-in;
   transition: all .2s ease-in;
   border-radius: 25px;
-  background: #5f9ea0;
-  // background: #e4e2e2;
+  background: #e4e2e2;
   box-shadow:  5px 5px 5px #c2c0c0, 
-              -5px -5px 5px #ffffff;
-
+  -5px -5px 5px #ffffff;
+  
   &:hover {
-    background-color: #8a2be2;
-    border-radius: 25px;
-    background: #8a2be2;
-    box-shadow:  5px 5px 5px #7525c0, 
-                 -5px -5px 5px #9f31ff;
+    color: #e4e2e2;
+    background: #5f9ea0;
+    box-shadow:  5px 5px 5px #518688, 
+    -5px -5px 5px #6db6b8;
+  }
+  
+  &.danger {
+    color: #8f0000;
+    &:hover {
+      color: #e4e2e2;
+      background: #8f0000;
+      box-shadow:  5px 5px 5px #7a0000, 
+      -5px -5px 5px #a40000;
+    }
   }
 }

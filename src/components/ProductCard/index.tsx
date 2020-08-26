@@ -41,14 +41,29 @@ class ProductComponent extends React.Component<IProps, {}> {
     return (
       <S.ProductCardContainer>
         <S.ProductCardBody>
-          <S.ProductCardColumn>
+          <S.ProductCardColumn style={{width: '30%'}}>
             <h2>{this.capitalize(this.props.product.name)}</h2>
           </S.ProductCardColumn>
-          <S.ProductCardColumn>
+          <S.ProductCardColumn style={{width: '40%'}}>
             <S.ProductCardRow>
               <S.ProductCardColumn>Qtd.</S.ProductCardColumn>
               <S.ProductCardColumn>Preço</S.ProductCardColumn>
               <S.ProductCardColumn>Total</S.ProductCardColumn>
+            </S.ProductCardRow>
+            <S.ProductCardRow>
+              <S.ProductCardColumn>{this.props.product.quantity}</S.ProductCardColumn>
+              <S.ProductCardColumn>R$ {this.props.product.price}</S.ProductCardColumn>
+              <S.ProductCardColumn>R$ {this.props.product.total}</S.ProductCardColumn>
+            </S.ProductCardRow>
+          </S.ProductCardColumn>
+          <S.ProductCardColumn style={{width: '30%', height: '100%'}}>
+            <S.ProductCardRow>
+              <S.ProductCardColumn>
+                <i className="fa fa-2x fa-pencil" onClick={this.editProduct}></i>
+              </S.ProductCardColumn>
+              <S.ProductCardColumn>
+                <i className="fa fa-2x fa-trash" onClick={this.removeProduct}></i>
+              </S.ProductCardColumn>
             </S.ProductCardRow>
           </S.ProductCardColumn>
         </S.ProductCardBody>
