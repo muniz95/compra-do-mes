@@ -15,16 +15,17 @@ body {
 
 input {
   height: 30px;
+  padding-left: 10px;
   margin-top: 5px;
   border-style: none;
+  border-radius: 10px;
+  background: #e4e2e2;
+  box-shadow: inset 5px 5px 5px #c2c0c0, 
+  inset -5px -5px 5px #ffffff;
 
   &[type=text]:focus {
     border-color: blue;
   }
-  border-radius: 34px;
-  background: #e4e2e2;
-  box-shadow:  5px 5px 5px #c2c0c0, 
-              -5px -5px 5px #ffffff;
 }
 
 button {
