@@ -59,3 +59,14 @@ export const decreaseTotal = (value: any) => {
 export const emptyTotal = () => {
   return { type: EMPTY_TOTAL };
 };
+
+export default {
+  saveProduct,
+  editProduct,
+  updateProduct,
+  removeProduct,
+  emptyProducts,
+  increaseTotal,
+  decreaseTotal,
+  emptyTotal,
+}

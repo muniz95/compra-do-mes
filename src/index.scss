@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  background-color: #e4e2e2;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input {
+  height: 30px;
+  padding-left: 10px;
+  margin-top: 5px;
+  border-style: none;
+  border-radius: 10px;
+  background: #e4e2e2;
+  box-shadow: inset 5px 5px 5px #c2c0c0, 
+  inset -5px -5px 5px #ffffff;
+
+  &[type=text]:focus {
+    border-color: blue;
+  }
+}
+
+button {
+  height: 30px;
+  border-radius: 10px;
+  border-style: none;
+  background-color: #5f9ea0;
+  -moz-transition: all .2s ease-in;
+  -o-transition: all .2s ease-in;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+  border-radius: 25px;
+  background: #5f9ea0;
+  // background: #e4e2e2;
+  box-shadow:  5px 5px 5px #c2c0c0, 
+              -5px -5px 5px #ffffff;
+
+  &:hover {
+    background-color: #8a2be2;
+    border-radius: 25px;
+    background: #8a2be2;
+    box-shadow:  5px 5px 5px #7525c0, 
+                 -5px -5px 5px #9f31ff;
+  }
+}
