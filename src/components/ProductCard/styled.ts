@@ -25,12 +25,12 @@ export const ProductCardBody = styled.div`
   align-items: center;
   justify-content: center;
   margin: 5px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 25px;
-  border-color: #DC0A2D;
   text-decoration: none;
   color: black;
+  border-radius: 34px;
+  background: #e4e2e2;
+  box-shadow:  5px 5px 5px #c2c0c0, 
+              -5px -5px 5px #ffffff;
 `;
 
 export const ProductCardColumn = styled.div`

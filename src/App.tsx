@@ -45,10 +45,10 @@ class App extends React.Component<IProps, IState> {
     );
     return (
       <React.Fragment>
-        <div>
+        <div style={{marginTop: '5px', marginBottom: '5px'}}>
           <ProductForm />
         </div>
-        <div>
+        <div style={{marginTop: '5px', marginBottom: '10px'}}>
           <h3>Total da compra: R$ {total.toFixed(2)}</h3>
           {btnCleanList}
         </div>
