@@ -78,7 +78,7 @@ class ProductForm extends React.Component<IProps, IState> {
     return (
       <form autoComplete="off">
         <S.FormFieldArea>
-          <label>Produto</label>
+          <label htmlFor="name">Produto</label>
           <input
             onChange={(event) => this.setState({name: event.target.value})}
             type="text"
@@ -89,7 +89,7 @@ class ProductForm extends React.Component<IProps, IState> {
           />
         </S.FormFieldArea>
         <S.FormFieldArea>
-          <label>Quantidade</label>
+          <label htmlFor="quantity">Quantidade</label>
           <input
             onChange={(event) => this.setState({quantity: Number.parseFloat(event.target.value)})}
             type="number"
@@ -100,7 +100,7 @@ class ProductForm extends React.Component<IProps, IState> {
           />
         </S.FormFieldArea>
         <S.FormFieldArea>
-          <label>Preço</label>
+          <label htmlFor="price">Preço</label>
           <input
             onChange={(event) => this.setState({price: Number.parseFloat(event.target.value)})}
             type="number"
@@ -111,7 +111,7 @@ class ProductForm extends React.Component<IProps, IState> {
             />
         </S.FormFieldArea>
         <S.FormFieldArea>
-          <button type="button" onClick={this.save} className="btn btn-default">Salvar</button>
+          <button type="button" onClick={this.save}>Salvar</button>
         </S.FormFieldArea>
       </form>
     );

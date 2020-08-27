@@ -56,7 +56,7 @@ class App extends React.Component<IProps, IState> {
           style={{
             display: "flex",
             flexFlow: "wrap",
-            maxHeight: "500px",
+            maxHeight: "400px",
             overflow: "auto",
           }}
         >

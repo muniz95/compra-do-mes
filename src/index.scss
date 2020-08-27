@@ -33,7 +33,7 @@ button {
   height: 30px;
   border-radius: 10px;
   border-style: none;
-  color: #5f9ea0;
+  color: #1d585a;
   font-weight: bolder;
   -moz-transition: all .2s ease-in;
   -o-transition: all .2s ease-in;
@@ -46,9 +46,9 @@ button {
   
   &:hover {
     color: #e4e2e2;
-    background: #5f9ea0;
-    box-shadow:  5px 5px 5px #518688, 
-    -5px -5px 5px #6db6b8;
+    background: #1d585a;
+    box-shadow:  5px 5px 5px #194b4d, 
+    -5px -5px 5px #216568;
   }
   
   &.danger {
