@@ -18,7 +18,7 @@ interface IAction {
 
 const byIdAsc = (a: Product, b: Product) => a.id - b.id;
 
-const products = (state = [], action: IAction) => {
+const products = (state: Product[] = [], action: IAction): Product[] => {
   switch (action.type) {
     case UPDATE_PRODUCT:
       return [...state.filter((s: any) => s.id !== action.payload.id), action.payload].sort(byIdAsc);
@@ -55,8 +55,12 @@ const total = (state = 0, action: IAction) => {
   }
 };
 
-export default combineReducers({
+const reducer = combineReducers({
   product,
   products,
   total
-} as any);
+});
+
+export type RootState = ReturnType<typeof reducer>;
+
+export default reducer;
