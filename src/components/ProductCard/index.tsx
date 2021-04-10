@@ -38,7 +38,7 @@ const ProductCard = (product: Product) => {
     <S.ProductCardContainer>
       <S.ProductCardBody>
         <S.ProductCardColumn style={{width: '30%'}}>
-          <h2>{capitalize(product.name)}</h2>
+          <h3>{capitalize(product.name)}</h3>
         </S.ProductCardColumn>
         <S.ProductCardColumn style={{width: '40%'}}>
           <S.ProductCardRow>
